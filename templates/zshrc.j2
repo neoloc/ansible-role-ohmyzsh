@@ -107,7 +107,7 @@ fi
 
 # set XDG_ vars
 export XDG_CONFIG_HOME="$HOME/.config"
-#export XDG_RUNTIME_DIR=/run/user/$(id -u <username>)
+export XDG_RUNTIME_DIR=/run/user/$(id -u $(whoami))
 
 # load ssh-agent
 eval $(systemctl --user show-environment | grep SSH_AUTH_SOCK)
