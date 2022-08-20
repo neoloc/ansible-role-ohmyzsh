@@ -1,0 +1,45 @@
+---
+# tasks file for role
+
+- name: install ohmyzsh packages
+  package:
+    name: "{{ ohmyzsh_packages }}"
+    state: present
+  tags: [ ohmyzsh ]
+  when: ohmyzsh_configure == True
+
+- name: set git proxy if required
+  git_config:
+    name: http.proxy
+    value: "{{ ohmyzsh_proxy_url }}"
+    scope: global
+  tags: [ ohmyzsh ]
+  when:
+    - ohmyzsh_configure == True
+    - ohmyzsh_proxy_url is defined
+
+- name: clone the ohmyzsh source repository
+  ansible.builtin.git:
+    repo: "{{ ohmyzsh_repository }}"
+    dest: "{{ ohmyzsh_path }}"
+    update: "{{ ohmyzsh_autoupdate }}"
+  tags: [ ohmyzsh ]
+  when: ohmyzsh_configure == True
+
+- name: update the zshrc template in the /etc/skel directory
+  ansible.builtin.template:
+    src: zshrc.j2
+    dest: /etc/skel/.zshrc
+    owner: root
+    group: root
+    mode: '644'
+  tags: [ ohmyzsh ]
+  when: ohmyzsh_configure == True
+
+- name: create the cache folder in the /etc/skel directory
+  ansible.builtin.file:
+    path: "/etc/skel/{{ ohmyzsh_default_cachedir }}"
+    state: directory
+    mode: '0755'
+  tags: [ ohmyzsh ]
+  when: ohmyzsh_configure == True

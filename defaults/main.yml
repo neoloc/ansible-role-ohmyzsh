@@ -1,0 +1,27 @@
+---
+# defaults file for role
+
+ohmyzsh_configure: false
+ohmyzsh_packages:
+  - git
+  - zsh
+  - vim
+ohmyzsh_path: /usr/share/ohmyzfs
+#ohmyzsh_proxy_url: http://proxy:3128 # configure git to use a proxy
+ohmyzsh_repository: https://github.com/robbyrussell/oh-my-zsh.git
+ohmyzsh_autoupdate: yes
+ohmyzsh_default_cachedir: .cache/ohmyzsh # relative to the ~/ directory
+ohmyzsh_default_theme: fishy
+ohmyzsh_default_editor: vim
+ohmyzsh_default_pager: less
+ohmyzsh_default_lang: en_AU.UTF-8
+ohmyzsh_default_histfile: .zsh_history # relative to the ~/ directory
+ohmyzsh_default_histsize: 10000
+ohmyzsh_default_histsave: 10000
+ohmyzsh_default_alias:
+  - name: zshrc
+    cmd: $EDITOR ~/.zshrc
+  - name: sshrc
+    cmd: $EDITOR ~/.ssh/config
+  - name: vimrc
+    cmd: $EDITOR ~/.vimrc
