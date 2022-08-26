@@ -15,7 +15,7 @@ ohmyzsh_default_theme: fishy
 ohmyzsh_default_editor: vim
 ohmyzsh_default_pager: less
 ohmyzsh_default_lang: en_AU.UTF-8
-ohmyzsh_default_histfile: .zsh_history # relative to the ~/ directory
+ohmyzsh_default_histfile: .cache/zsh_history # relative to the ~/ directory
 ohmyzsh_default_histsize: 10000
 ohmyzsh_default_histsave: 10000
 ohmyzsh_default_alias:
